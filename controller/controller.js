@@ -55,10 +55,15 @@ var app = {
         // } catch (ex) {
         //     console.log(ex.message);
         // }
+        //app.buscarLibro(789568410578);
         var scanner = cordova.require("cordova/plugin/BarcodeScanner");
 
         scanner.scan(
             function (result) {
+                ("Scanner result: \n" +result+
+                    "text: " + result.text + "\n" +
+                    "format: " + result.format + "\n" +
+                    "cancelled: " + result.cancelled + "\n");
                 app.buscarLibro(result.text);
                 // if(!app.buscarLibro(result.text)){
                 //     alert('El libro no se encuentra en nuestros registros, por favor agregar manualmente.');
