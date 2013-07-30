@@ -148,8 +148,6 @@ var app = {
                             document.getElementById("autor").value = a.autor;
                             document.getElementById("precioReferencia").value = a.precioReferencia;
                             return true;
-                        }else{
-                            return false;
                         }
                         //$.mobile.changePage( '#newSolicitudPag', { transition: "slide"} );
                     });
