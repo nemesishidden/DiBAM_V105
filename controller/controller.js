@@ -60,11 +60,12 @@ var app = {
 
         scanner.scan(
             function (result) {
-                alert("Scanner result: \n" +result+
-                    "text: " + result.text + "\n" +
-                    "format: " + result.format + "\n" +
-                    "cancelled: " + result.cancelled + "\n");
-                app.buscarLibro(result.text);
+                if(result.format == 'EAN_13'){
+                    app.buscarLibro(result.text);
+                }else{
+                    alert("El codigo escaneado no es un libro, por favor intene nuevamente.")
+                }
+                
                 // if(!app.buscarLibro(result.text)){
                 //     alert('El libro no se encuentra en nuestros registros, por favor agregar manualmente.');
                 // }
@@ -139,6 +140,7 @@ var app = {
     },
 
     buscarLibro: function(codigoIsbn){
+        var existe = false;
         $.ajax({
             //url: 'data/libro.json',
             url: 'http://dibam-sel.opensoft.cl/libro.asp',
@@ -149,16 +151,20 @@ var app = {
                 if(data.success){
                     data.model.forEach(function(a){
                         if(a.isbn == codigoIsbn){
+                            existe = true;
                             document.getElementById("isbn").value = a.isbn;
                             document.getElementById("titulo").value = a.titulo;
                             document.getElementById("autor").value = a.autor;
                             document.getElementById("precioReferencia").value = a.precioReferencia;
-                            $.mobile.changePage( '#newSolicitudPag', { transition: "slide"} );
                         }
                     });
                 }
             }
         });
+        if(!existe){
+            alert("El libro no se encuentra en nuestros registros, por favor ingreselo manuelmente.");
+        }
+        $.mobile.changePage( '#newSolicitudPag', { transition: "slide"} );
     },
 
     guardarLibro: function(){
