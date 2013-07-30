@@ -60,7 +60,7 @@ var app = {
 
         scanner.scan(
             function (result) {
-                ("Scanner result: \n" +result+
+                alert("Scanner result: \n" +result+
                     "text: " + result.text + "\n" +
                     "format: " + result.format + "\n" +
                     "cancelled: " + result.cancelled + "\n");
