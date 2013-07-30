@@ -162,6 +162,7 @@ var app = {
             }
         });
         if(!existe){
+            document.getElementById("isbn").value=codigoIsbn;
             alert("El libro no se encuentra en nuestros registros, por favor ingreselo manuelmente.");
         }
         $.mobile.changePage( '#newSolicitudPag', { transition: "slide"} );
