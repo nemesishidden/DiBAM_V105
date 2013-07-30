@@ -59,11 +59,12 @@ var app = {
 
         scanner.scan(
             function (result) {
-                if(!app.buscarLibro(result.text)){
-                    alert('El libro no se encuentra en nuestros registros, por favor agregar manualmente.');
-                }
+                app.buscarLibro(result.text);
+                // if(!app.buscarLibro(result.text)){
+                //     alert('El libro no se encuentra en nuestros registros, por favor agregar manualmente.');
+                // }
                 
-                $.mobile.changePage( '#newSolicitudPag', { transition: "slide"} );
+                // $.mobile.changePage( '#newSolicitudPag', { transition: "slide"} );
             }, 
             function (error) {
                 alert("Error al escanear el Libro: " + error);
@@ -147,9 +148,8 @@ var app = {
                             document.getElementById("titulo").value = a.titulo;
                             document.getElementById("autor").value = a.autor;
                             document.getElementById("precioReferencia").value = a.precioReferencia;
-                            return true;
+                            $.mobile.changePage( '#newSolicitudPag', { transition: "slide"} );
                         }
-                        //$.mobile.changePage( '#newSolicitudPag', { transition: "slide"} );
                     });
                 }
             }
