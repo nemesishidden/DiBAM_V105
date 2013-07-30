@@ -60,11 +60,11 @@ var app = {
 
         scanner.scan(
             function (result) {
-                if(result.format == 'EAN_13'){
+                //if(result.format == 'EAN_13'){
                     app.buscarLibro(result.text);
-                }else{
-                    alert("El codigo escaneado no es un libro, por favor intene nuevamente.")
-                }
+                // }else{
+                //     alert("El codigo escaneado no es un libro, por favor intene nuevamente.")
+                // }
                 
                 // if(!app.buscarLibro(result.text)){
                 //     alert('El libro no se encuentra en nuestros registros, por favor agregar manualmente.');
