@@ -18,7 +18,7 @@ var app = {
         document.getElementById('scan').addEventListener('click', this.scan, false);
         document.getElementById('guardarLibro').addEventListener('click', this.guardarLibro, false);
         //document.getElementById('newSolicitud').addEventListener('click', this.cambioPagina, false);
-        document.getElementById('newSolicitud').addEventListener('click', this.nuevaSolicitud, false);
+        //document.getElementById('newSolicitud').addEventListener('click', this.nuevaSolicitud, false);
         document.getElementById('solicituesPorEnviar').addEventListener('click', this.obtenerSolicitudes, false);
         
     },
@@ -59,12 +59,12 @@ var app = {
 
         scanner.scan(
             function (result) {
-                //app.buscarLibro(result.text);
+                app.buscarLibro(result.text);
                 //$.mobile.changePage( '#newSolicitudPag', { transition: "slide"} );
-                alert("Scanner result: \n" +
-                    "text: " + result.text + "\n" +
-                    "format: " + result.format + "\n" +
-                    "cancelled: " + result.cancelled + "\n");
+                // alert("Scanner result: \n" +
+                //     "text: " + result.text + "\n" +
+                //     "format: " + result.format + "\n" +
+                //     "cancelled: " + result.cancelled + "\n");
             }, 
             function (error) {
                 alert("Error al escanear el Libro: " + error);
